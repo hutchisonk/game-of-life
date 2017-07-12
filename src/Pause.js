@@ -8,16 +8,14 @@ class PauseButton extends Component {
   }
 
   pause() {
-    //setGenInterval={this.setGenInterval} deleted this prop
-    var generationinterval = this.props.generationinterval;
-    console.log(generationinterval)
-    clearInterval(generationinterval);
-    // this.props.setGenInterval(generationinterval);
+    var generation_interval_id = this.props.generationinterval;
+    console.log(generation_interval_id)
+    clearInterval(generation_interval_id);
   }
 
   render() {
     return(
-      <button onClick={() => this.pause()}>{this.props.buttonname}</button>
+      <button onClick={() => this.props.pause()}>{this.props.buttonname}</button>
     )
   }//render
 }//component

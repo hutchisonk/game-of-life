@@ -8,11 +8,14 @@ class Cell extends Component {
       return (
         <td className = "deadcell" onClick={() => this.props.cycleCell(this.props.rowval, this.props.colval, this.props.cellState)}></td>
       )
+    } else if (this.props.cellState === 2) {
+      return (
+        <td className = "oldcell" onClick={() => this.props.cycleCell(this.props.rowval, this.props.colval, this.props.cellState)}></td>
+      )
     } else {
 
-
     return (
-      <td className = "livingcell" onClick={() => this.props.cycleCell(this.props.rowval, this.props.colval, this.props.cellState)}></td>
+      <td className = "newcell" onClick={() => this.props.cycleCell(this.props.rowval, this.props.colval, this.props.cellState)}></td>
       )
     }//else
   }//render

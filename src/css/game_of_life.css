@@ -132,15 +132,21 @@ custom css below
 body {
   color:#4E3333;
   background-color: #9CC5A1;
-  font-family: sans-serif;
+  font-family: 'Revalia', sans-serif;
 }
-/*
+
 .App-header {
   margin: auto auto;
-}*/
+}
 
 .container {
-  background-color: #9CC5A1;
+  background-color: #6C9250;
+
+  background-image: url("https://images.pexels.com/photos/132938/pexels-photo-132938.jpeg?w=940&h=650&auto=compress&cs=tinysrgb");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position-y: -75%;
+
   border:25px solid #216869;
   border-radius: 3px;
   padding:10px;
@@ -148,29 +154,28 @@ body {
   width:90%;
   margin: auto auto;
 }
+
 .container div table {
   margin: auto auto;
 }
 
 .board {
-  background-color: #9CC5A1;
-  border:20px solid #49A078;
+  margin-top:275px;
+  /*border:20px solid #49A078;*/
   border-radius: 3px;
   padding:10px;
-  /*text-align: center;*/
-  /*margin: auto auto;*/
 }
 
 table {
-  border-radius: 3px;
-  border:3px solid #49A078;
+  border-radius: 10px;
+  border:15px solid #49A078;
 }
 
 td {
   border-radius: 2px;
   height:15px;
   width:15px;
-  border:1px solid #000;
+  border:2px solid #000;
   text-align: center;
 }
 
@@ -185,10 +190,33 @@ td:hover {
 .label-body {
   margin-right: 25px;
 }
-.livingcell {
-  background-color: #49A078;
+
+.newcell {
+  background-color: #AAF683;
 }
 
+.oldcell {
+  background-color: #49A078;
+}
 .deadcell {
   background-color: #4E3333;
+}
+
+.generation_div {
+font-size: 1.65em;
+}
+
+h2 {
+  text-align: center;
+
+}
+h2 a {
+  text-decoration: none;
+  color: #4E3333;
+  font-weight: lighter;
+  font-size:2.5em;
+}
+
+h2 a:hover {
+  text-decoration: underline;
 }
