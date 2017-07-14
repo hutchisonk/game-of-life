@@ -18,10 +18,7 @@ class App extends Component {
     this.updateBoard = this.updateBoard.bind(this);
     this.clearBoard = this.clearBoard.bind(this);
     this.getCellNeighborNumber = this.getCellNeighborNumber.bind(this);
-    // this.setSpeed = this.setSpeed.bind(this);
-    // this.evolve = this.evolve.bind(this);
     this.pause = this.pause.bind(this);
-
     this.setGenInterval = this.setGenInterval.bind(this);
     this.nextGeneration = this.nextGeneration.bind(this);
 
@@ -103,7 +100,6 @@ setGenInterval(generation_interval_id) {
 
 pause() {
     var generation_interval_id = this.state.generation_interval_id;
-    console.log(generation_interval_id)
     clearInterval(generation_interval_id);
 }
 
@@ -112,7 +108,6 @@ nextGeneration() {
 
   //get the number of neighbors surrounding a cell
   function getCellNeighborNumber(rowval, colval) {
-    // console.log(rowval, colval)
     var neighborCount = 0;
     var prevRow, nextRow, prevCol, nextCol;
     if (rowval === 0) {
@@ -171,7 +166,6 @@ nextGeneration() {
     if (cellStatesObj[nextRow][nextCol] !== 0) {
       neighborCount++;
     }
-  // console.log("Neighbor count is: " + neighborCount);
   return(neighborCount);
   }
 
@@ -235,7 +229,6 @@ nextGeneration() {
 }
 
 getCellNeighborNumber(rowval, colval) {
-  console.log(rowval, colval)
   var neighborCount = 0;
   var prevRow, nextRow, prevCol, nextCol;
   if (rowval === 0) {
@@ -295,7 +288,6 @@ getCellNeighborNumber(rowval, colval) {
   if (this.state.cellStates[nextRow][nextCol] !== 0) {
     neighborCount++;
   }
-console.log("Neighbor count is: " + neighborCount);
 }
 
 randomizeBoard(dimension) {
@@ -308,27 +300,6 @@ randomizeBoard(dimension) {
     cellStates.push(subarr);
     }
     this.setState({ cellStates })
-}
-
-setBoardSize(e, size) {
-  // e.preventDefault;
-  var dim = size;
-  console.log(dim);
-  // switch(size) {
-  //   case "small":
-  //       dim=35;
-  //       break;
-  //   case "med":
-  //       dim=75;
-  //         break;
-  //   case "large":
-  //        dim=105;
-  //         break;
-  //   default:
-  //        dim=75;
-  //   }
-  // this.setState({ dim });
-  console.log(this.state.dim);
 }
 
 updateBoardSize(size) {
@@ -345,7 +316,6 @@ updateBoardSize(size) {
       self.setState({ cellStates })
   }
 
-  console.log(size);
   var dim;
   //changes "dim" var based on size input variable
   switch(size) {
@@ -361,12 +331,11 @@ updateBoardSize(size) {
     default:
          dim=45;
     }
-    console.log(dim);
     //sets dim state based on logic above
     this.setState({ dim });
 
     //reset the generation count since we're resetting the board
-    var generation = 1;
+    var generation = 0;
     this.setState({ generation });
 
     //fills in 0s on new board and updates cellState state based on new dim state
@@ -391,6 +360,26 @@ componentDidMount(){
 }
 
   render() {
+
+        // *** this code block replaces the syntax below for compatibility with CodePen, which doesn't recognize [...Array(n)].map
+
+        // var row_array = [];
+        // var self = this;
+        // for (let i = 0; i < this.state.dim; i++) {
+        //   row_array.push([]);
+        // }
+
+        //** to go inside <tbody> **
+        // {  row_array.map(function(x, i) {
+        //       return(
+        //         <Row key={i} rowval={i} dim={self.state.dim} cellStates={self.state.cellStates[i]}
+        //         updateBoard={self.updateBoard}
+        //         cycleCell={self.cycleCell}
+        //         getCellNeighborNumber={self.getCellNeighborNumber}/>
+        //       );
+        //     })
+        //    }
+
     return (
       <div className="App">
         <div className="App-header">
@@ -399,14 +388,14 @@ componentDidMount(){
 
         <div className="container">
           <div className="board">
-                <table className="u-full-width">
+                <table >
                     <tbody>
                       {[...Array(this.state.dim)].map((x, i) =>
-                        <Row key={i} rowval={i} dim={this.state.dim} cellStates={this.state.cellStates[i]}
-                          updateBoard={this.updateBoard}
-                          cycleCell={this.cycleCell}
-                          getCellNeighborNumber={this.getCellNeighborNumber}/>
-                      )}
+                <Row key={i} rowval={i} dim={this.state.dim} cellStates={this.state.cellStates[i]}
+                  updateBoard={this.updateBoard}
+                  cycleCell={this.cycleCell}
+                  getCellNeighborNumber={this.getCellNeighborNumber}/>
+              )}
 
                     </tbody>
                   </table>

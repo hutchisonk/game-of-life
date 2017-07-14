@@ -12,7 +12,7 @@ evolve(speed) {
   this.props.pause();
   console.log(speed);
   var self=this;
-    var generation_interval_id = this.props.generationinterval;//setInterval(this.timer, 1000);
+    var generation_interval_id = this.props.generationinterval;
     	generation_interval_id = setInterval(function() {
             self.props.nextGeneration()
     	}, speed);
@@ -34,8 +34,6 @@ updateSize(size) {
                 <button onClick={() => this.evolve(500)}>Slow</button>
                 <button onClick={() => this.evolve(150)}>Medium</button>
                 <button onClick={() => this.evolve(75)}>Fast</button>
-
-
        </label>
       )
     } else if (this.props.menuname === "Update Board Size") {
@@ -46,10 +44,6 @@ updateSize(size) {
                 <button onClick={() => this.updateSize("small")}>Small</button>
                 <button onClick={() => this.updateSize("med")}>Medium</button>
                 <button onClick={() => this.updateSize("large")}>Large</button>
-
-
-
-
        </label>
       )
     }
